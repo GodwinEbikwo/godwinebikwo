@@ -1,26 +1,20 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-slug: 'first-blog-of-living'
-title: 'My First Blog Post using MDX'
+slug: 'Scrapping-theAA.com'
+title: 'Scrapping the AA'
 pubDate: 2022-07-01
 description: 'This is the first post of my new Astro blog.'
 author: 'Astro Learner'
 image:
     url: 'https://docs.astro.build/assets/full-logo-light.png'
     alt: 'The full Astro logo.'
-tags: ["Scrapping", "Data Analytics"]
+tags: ["Web Scrapping", 'Analytics']
 ---
 
-# My First blog post
+# Scrapping the AA.com
 
 Published on: 2022-07-01
 
 Welcome to my _new blog_ about learning Astro! Here, I will share my learning journey as I build a new website.
 
-## What I've accomplished
 
-
-
-## What's next
-
-I will finish the Astro tutorial, and then keep adding more posts. Watch this space for more to come.

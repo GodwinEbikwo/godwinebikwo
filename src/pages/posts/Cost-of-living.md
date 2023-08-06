@@ -3,17 +3,16 @@ layout: ../../layouts/MarkdownPostLayout.astro
 slug: 'my-cost-of-living'
 title: 'Cost of Living crisis'
 pubDate: 2023-08-05
-description: 'A comparative analysis of 10 home staple items across different retailers in the united Kingdom'
+description: 'Analysis of 10 home staple items across the Uk'
 author: 'Astro Learner'
 image:
-    url: 'https://docs.astro.build/assets/full-logo-light.png'
+    url: 'https://res.cloudinary.com/dsgbd8xpu/image/upload/v1691349546/cld-sample-5.jpg'
     alt: 'The full Astro logo.'
-tags: ["astro", "blogging", "learning in public"]
+tags: ["blogging", 'Analytics']
 ---
 
-# My First blog post
-Welcome to my _new blog_ about learning Astro! Here, I will share my learning journey as I build a new website.
+# Cost of living crisis
 
-## What's next
 
-I will finish the Astro tutorial, and then keep adding more posts. Watch this space for more to come.
+This Markdown file creates a page at 
+

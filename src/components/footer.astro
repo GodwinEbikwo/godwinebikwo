@@ -1,12 +1,21 @@
 ---
 const platform = 'github';
-const username = 'withastro';
+const username = 'godwinebikwo';
 ---
 
 <footer>
-  <p>
-    Learn more about my projects on <a
-      href={`https://www.${platform}.com/${username}`}>{platform}</a
-    >!
-  </p>
+  <div class='f-container'>
+    <p>
+      Learn more about my projects on <a
+        href={`https://www.${platform}.com/${username}`}>{platform}</a
+      >!
+    </p>
+  </div>
 </footer>
+
+<style>
+  .f-container {
+    position: relative;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+  }
+</style>

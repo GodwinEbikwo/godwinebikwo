@@ -19,20 +19,22 @@ import Navigation from '../components/Navigation.astro';
     <link rel='preconnect' href='https://fonts.googleapis.com' />
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
     <link
-      href='https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Inter:wght@400;500;600&display=swap'
+      href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap'
       rel='stylesheet'
     />
     <title>{title}</title>
   </head>
   <body>
-    <Navigation />
+    <!-- <Navigation /> -->
 
     <div class='b-root'>
-      <main class='b-main'>
-        <div class='b-container'>
-          <slot />
-        </div>
-      </main>
+      <div class='b-root_inner'>
+        <main class='b-main'>
+          <div class='b-container'>
+            <slot />
+          </div>
+        </main>
+      </div>
     </div>
   </body>
 </html>
@@ -96,9 +98,7 @@ import Navigation from '../components/Navigation.astro';
   }
 
   a {
-    text-decoration-skip-ink: auto;
     text-decoration: none;
-    color: inherit;
   }
 
   img,
@@ -124,9 +124,16 @@ import Navigation from '../components/Navigation.astro';
     font-family: 'Inter', system-ui, sans-serif;
   }
 
+  a {
+    text-decoration-skip-ink: auto;
+    text-decoration: none;
+    color: inherit;
+  }
+
   h1 {
     font-size: var(--font-size-md);
     letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
   }
 
   .b-root {
@@ -134,7 +141,15 @@ import Navigation from '../components/Navigation.astro';
     flex: 1 1 auto;
     flex-direction: column;
     min-height: 100vh;
-    border: 1px solid yellow;
+  }
+
+  .b-root_inner {
+    overflow-x: hidden;
+    background: radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      rgba(120, 119, 198, 0.3),
+      var(--transparent)
+    );
   }
 
   .b-main {
@@ -143,7 +158,6 @@ import Navigation from '../components/Navigation.astro';
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    border: 1px solid red;
   }
 
   .b-container {
@@ -152,88 +166,5 @@ import Navigation from '../components/Navigation.astro';
     padding-top: calc(0.5 * var(--header-height));
     padding-left: var(--page-padding);
     padding-right: var(--page-padding);
-    border: 1px solid green;
   }
-
-  // .o-main {
-  //   display: flex;
-  //   flex: 1 1 auto;
-  //   flex-direction: column;
-  //   min-height: 100vh;
-  // }
-
-  // .o-root {
-  //   --header-height: 48px;
-  //   overflow-x: hidden;
-  //   margin-top: calc(-1 * var(--header-height));
-  //   padding-top: var(--header-height);
-  //   padding-left: var(--page-padding);
-  //   padding-right: var(--page-padding);
-  //   margin-bottom: -164px;
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: center;
-  //   -webkit-box-pack: center;
-  //   justify-content: center;
-
-  //   background: radial-gradient(
-  //     ellipse 80% 50% at 50% 10%,
-  //     rgba(120, 119, 198, 0.3),
-  //     var(--transparent)
-  //   );
-  // }
-
-  // .o-root_inner {
-  //   padding-left: var(--page-padding);
-  //   padding-right: var(--page-padding);
-  //   max-width: var(--page-max-width);
-  //   width: 100%;
-  //   margin: 0px auto;
-  // }
-
-  // .o-container {
-  //   display: flex;
-  //   flex: initial;
-  //   flex-direction: column;
-  //   align-items: center;
-  // }
-
-  // .o-container_inner {
-  //   display: flex;
-  //   align-items: center;
-  //   flex-direction: column;
-  //   padding-top: 6rem;
-  // }
-
-  // .o-heading_block {
-  //   position: relative;
-  //   display: flex;
-  //   flex: initial;
-  //   flex-direction: column;
-  //   align-items: center;
-
-  //   padding-left: var(--page-padding-left);
-  //   padding-right: var(--page-padding-right);
-  //   max-width: var(--page-max-width);
-  //   width: 100%;
-  //   margin: 0px auto;
-  // }
-
-  // .o-caption {
-  //   color: var(--text-bright-accent);
-  //   margin-bottom: 0.42rem;
-  //   text-transform: uppercase;
-  //   letter-spacing: -0.033em;
-  // }
-
-  // .o-title {
-  //   margin-bottom: 0.42rem;
-  //   letter-spacing: -0.011em;
-  //   font-size: var(--font-size-xxl);
-  //   line-height: 1.1;
-  // }
-
-  // .o-subtitle {
-  //   color: var(--text-bright-accent);
-  // }
 </style>

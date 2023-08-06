@@ -57,17 +57,18 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
         }
       </ul>
 
-      <div class='content'>
+      <ul class='content'>
         {
           allPosts.map((post) => (
             <Card
               href={post.url}
               title={post.frontmatter.title}
               body={post.frontmatter.description}
+              tags={post.frontmatter.tags}
             />
           ))
         }
-      </div>
+      </ul>
 
       <p></p>
     </section>
@@ -167,9 +168,12 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
       border: 1px solid rgba(255, 255, 255, 0.05);
       border-radius: var(--border-radius);
       background: rgba(255, 255, 255, 0.1);
-      margin: 0.25em;
+      margin-right: 0.5rem;
       padding: 0.5em 1em;
       text-transform: capitalize;
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 
