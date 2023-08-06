@@ -4,42 +4,75 @@ const { frontmatter } = Astro.props;
 ---
 
 <BlogLayout title={frontmatter.title}>
-  <h1 class='o-title'>{frontmatter.title}</h1>
-  <p class='o-subtitle'>{frontmatter.pubDate.slice(0, 10)}</p>
-  <p class='o-caption'><em>{frontmatter.description}</em></p>
-  <p>Written by: {frontmatter.author}</p>
+  <header class='c-block_header' role='presentation'>
+    <p class='c-subtitle'>{frontmatter.pubDate.slice(0, 10)}</p>
+    <p class='c-subtitle'>Written by: {frontmatter.author}</p>
+    <p class='c-caption'>{frontmatter.description}</p>
+  </header>
+
   <img src={frontmatter.image.url} width='300' alt={frontmatter.image.alt} />
 
-  <div class='tags'>
+  <ul class='tags'>
     {
       frontmatter.tags.map((tag) => (
-        <p class='tag'>
+        <li class='tag'>
           <a href={`/tags/${tag}`}>{tag}</a>
-        </p>
+        </li>
       ))
     }
+  </ul>
+
+  <div class='c-block_title'>
+    <h1 class='c-title'>{frontmatter.title}</h1>
   </div>
 
   <slot />
 </BlogLayout>
 
-<style>
-  a {
-    color: #00539f;
-  }
-
+<style lang='scss'>
   .tags {
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
+    margin-bottom: 1.5rem;
   }
 
   .tag {
+    backdrop-filter: blur(12px);
+    border-image: initial;
+    background-position: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    background: rgba(255, 255, 255, 0.1);
     margin: 0.25em;
-    border: dotted 1px #a1a1a1;
-    border-radius: 0.5em;
     padding: 0.5em 1em;
-    font-size: 1.15em;
-    background-color: #f8fcfd;
+    text-transform: capitalize;
+  }
+
+  .c-block_header {
+    margin-bottom: 1.5rem;
+
+    .c-caption {
+      color: var(--text-bright-accent);
+      margin-bottom: 0.42rem;
+      text-transform: capitalize;
+      letter-spacing: -0.033em;
+    }
+
+    .c-subtitle {
+      color: var(--text-bright-accent);
+    }
+  }
+
+  .c-block_title {
+    margin-bottom: 1.5rem;
+
+    .c-title {
+      margin-top: 0;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      font-size: var(--font-size-xl);
+    }
   }
 </style>

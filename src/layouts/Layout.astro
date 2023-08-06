@@ -5,6 +5,7 @@ interface Props {
 
 const { title } = Astro.props;
 
+import Navigation from '../components/Navigation.astro';
 import Footer from '../components/footer.astro';
 ---
 
@@ -40,8 +41,6 @@ import Footer from '../components/footer.astro';
 </html>
 
 <style is:global lang='scss'>
-  $ls: -0.02em;
-
   :root {
     --ls: -0.02em;
 

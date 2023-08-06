@@ -86,6 +86,12 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
 
     & > .name_container {
       margin-bottom: 3rem;
+
+      & > h1 {
+        font-weight: 600;
+        letter-spacing: 0.011em;
+        text-transform: uppercase;
+      }
     }
 
     & > .caption {
@@ -134,6 +140,11 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
 
     & > .name_container {
       margin-bottom: 3rem;
+      & > h1 {
+        font-weight: 600;
+        letter-spacing: 0.011em;
+        text-transform: uppercase;
+      }
     }
 
     & > .content {
@@ -170,12 +181,6 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
     .l-page_left {
       & > .name_container {
         margin-bottom: 1rem;
-
-        & > h1 {
-          font-weight: 600;
-          letter-spacing: 0.011em;
-          text-transform: uppercase;
-        }
       }
     }
 
@@ -189,12 +194,6 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
 
       & > .name_container {
         margin-bottom: 1rem;
-
-        & > h1 {
-          font-weight: 600;
-          letter-spacing: 0.011em;
-          text-transform: uppercase;
-        }
       }
 
       & > .content {
