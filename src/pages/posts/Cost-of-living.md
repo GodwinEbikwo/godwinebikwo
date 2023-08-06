@@ -1,14 +1,14 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-slug: 'first-blog-of-living'
-title: 'My First Blog Post using MDX'
-pubDate: 2022-07-01
-description: 'This is the first post of my new Astro blog.'
+slug: 'my-cost-of-living'
+title: 'Cost of Living crisis!'
+pubDate: 2023-08-05
+description: 'A comparative analysis of 10 home staple items across different retailers in the united Kingdom'
 author: 'Astro Learner'
 image:
     url: 'https://docs.astro.build/assets/full-logo-light.png'
     alt: 'The full Astro logo.'
-tags: ["Scrapping", "Data Analytics"]
+tags: ["astro", "blogging", "learning in public"]
 ---
 
 # My First blog post

@@ -1,14 +1,14 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-slug: 'first-blog-of-living'
-title: 'My First Blog Post using MDX'
+slug: 'Show-me-your-music-and-I-can-tell-you-who-you-are.md'
+title: 'My Spotify Music Analysis'
 pubDate: 2022-07-01
 description: 'This is the first post of my new Astro blog.'
 author: 'Astro Learner'
 image:
     url: 'https://docs.astro.build/assets/full-logo-light.png'
     alt: 'The full Astro logo.'
-tags: ["Scrapping", "Data Analytics"]
+tags: ["API", "Data Visualisation"]
 ---
 
 # My First blog post

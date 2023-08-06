@@ -1,0 +1,31 @@
+---
+const { headings } = Astro.props;
+---
+
+<nav aria-label='Breadcrumb'>
+  <ul>
+    {
+      headings.map(({ id, text }) => (
+        <li>
+          <a href={`#${id}`}>{text}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  nav ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  nav li {
+    display: inline;
+  }
+
+  nav li + li::before {
+    content: '/';
+    padding: 0 0.5rem;
+  }
+</style>

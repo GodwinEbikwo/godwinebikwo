@@ -1,6 +1,8 @@
 ---
 import Card from '../components/Card.astro';
 import Layout from '../layouts/Layout.astro';
+const allPosts = await Astro.glob('../pages/posts/*.md');
+const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
 ---
 
 <Layout title='Welcome to Astro.'>
@@ -10,16 +12,19 @@ import Layout from '../layouts/Layout.astro';
         <h1 class='name'>Godwin Ebikwo</h1>
       </div>
 
-      <h4 class='caption'>Data Scientist/Insight Analyst</h4>
+      <h4 class='caption'>Graduate data scientist.</h4>
       <br />
 
       <div class='about'>
         <h4>
           I am a data science Master’s Student, with a strong background in
-          programming, statistical analysis and machine learning. I am
-          interested in utilizing data-driven strategies to drive informed
-          decision making, captivate audiences through storytelling, foster
-          innovation and facilitate growth within organizations.
+          programming, statistical analysis and machine learning.
+
+          <br />
+          <br />
+          I am interested in utilizing data-driven strategies to drive informed decision
+          making, captivate audiences through storytelling, foster innovation and
+          facilitate growth within organizations.
         </h4>
       </div>
 
@@ -38,47 +43,163 @@ import Layout from '../layouts/Layout.astro';
     </aside>
 
     <section class='l-page_right'>
-      <h1>Projects</h1>
+      <div class='name_container'>
+        <h1>Portfolio</h1>
+      </div>
+
+      <ul class='tags'>
+        {
+          tags.map((tag) => (
+            <li class='tag'>
+              <a href={`/tags/${tag}`}>{tag}</a>
+            </li>
+          ))
+        }
+      </ul>
 
       <div class='content'>
-        <Card
-          href='/'
-          title='How to build a dashboard using Dash'
-          body='Not really sure'
-        />
-        <Card
-          href='/'
-          title='How to build a dashboard using Dash'
-          body='Not really sure'
-        />
-        <Card
-          href='/blog'
-          title='How to build a dashboard using Dash'
-          body='Not really sure'
-        />
-        <Card
-          href='/'
-          title='How to build a dashboard using Dash'
-          body='Not really sure'
-        />
-        <Card
-          href='/'
-          title='How to build a dashboard using Dash'
-          body='Not really sure'
-        />
-        <Card
-          href='/'
-          title='How to build a dashboard using Dash'
-          body='Not really sure'
-        />
-        <Card
-          href='/blog'
-          title='How to build a dashboard using Dash'
-          body='Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil reiciendis suscipit hic magnam perferendis sit tempore impedit? Ducimus, velit. Aliquid tempore voluptatum aperiam deleniti voluptates, erro'
-        />
+        {
+          allPosts.map((post) => (
+            <Card
+              href={post.url}
+              title={post.frontmatter.title}
+              body={post.frontmatter.description}
+            />
+          ))
+        }
       </div>
 
       <p></p>
     </section>
   </div>
 </Layout>
+
+<style lang='scss'>
+  .l-page_inner {
+    display: flex;
+  }
+
+  .l-page_left {
+    position: relative;
+    flex: 0 0 30%;
+    letter-spacing: -0.011em;
+
+    & > .name_container {
+      margin-bottom: 3rem;
+    }
+
+    & > .caption {
+    }
+
+    & > .availability {
+      color: var(--text-bright-accent);
+      margin-bottom: 0.5rem;
+    }
+
+    & > .location {
+      color: var(--text-bright-accent);
+      margin-bottom: 0.5rem;
+    }
+
+    & > .about {
+      display: block;
+      max-width: 35ch;
+      line-height: 1.6;
+
+      @media (max-width: 768px) {
+        max-width: none;
+      }
+    }
+
+    & > .socials {
+      color: var(--text-bright-accent);
+      margin-bottom: 0.5rem;
+
+      & ul {
+        display: flex;
+        & > li {
+          margin-right: 0.5em;
+          text-decoration: underline;
+
+          &:last-child {
+            margin-right: 0em;
+          }
+        }
+      }
+    }
+  }
+
+  .l-page_right {
+    flex: 0 0 70%;
+
+    & > .name_container {
+      margin-bottom: 3rem;
+    }
+
+    & > .content {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-gap: 10px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 auto;
+    }
+
+    .tag {
+      backdrop-filter: blur(12px);
+      border-image: initial;
+      background-position: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--border-radius);
+      background: rgba(255, 255, 255, 0.1);
+      margin: 0.25em;
+      padding: 0.5em 1em;
+      text-transform: capitalize;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .l-page_inner {
+      flex-direction: column;
+    }
+
+    .l-page_left {
+      & > .name_container {
+        margin-bottom: 1rem;
+
+        & > h1 {
+          font-weight: 600;
+          letter-spacing: 0.011em;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    .l-page_left,
+    .l-page_right {
+      flex: 0 0 100%;
+    }
+
+    .l-page_right {
+      margin-top: 2rem;
+
+      & > .name_container {
+        margin-bottom: 1rem;
+
+        & > h1 {
+          font-weight: 600;
+          letter-spacing: 0.011em;
+          text-transform: uppercase;
+        }
+      }
+
+      & > .content {
+        margin-top: 1rem;
+      }
+    }
+  }
+</style>
