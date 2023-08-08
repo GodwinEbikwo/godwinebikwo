@@ -8,7 +8,7 @@ author: 'Astro Learner'
 image:
     url: 'https://res.cloudinary.com/dsgbd8xpu/image/upload/v1691349546/cld-sample-5.jpg'
     alt: 'The full Astro logo.'
-tags: ["blogging", 'Analytics']
+tags: ['Analytics']
 ---
 
 # Cost of living crisis

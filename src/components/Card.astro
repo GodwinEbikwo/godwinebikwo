@@ -15,19 +15,20 @@ const { href, title, body, tags } = Astro.props;
       {title}
       <span>&rarr;</span>
     </h2>
-    <div class='eclipse-text-container'>
-      <p>
-        {body}
-      </p>
-    </div>
+
+    <p>
+      {body}
+    </p>
   </a>
 
   {
     tags && (
       <ul class='tags'>
         {tags.map((tag) => (
-          <li class='tag'>
-            <a href={`/tags/${tag}`}>{tag}</a>
+          <li>
+            <a class='tag' href={`/tags/${tag}`}>
+              {tag}
+            </a>
           </li>
         ))}
       </ul>
@@ -37,8 +38,7 @@ const { href, title, body, tags } = Astro.props;
 
 <style lang='scss'>
   .link-card {
-    display: flex;
-    flex-direction: column;
+    width: 100%;
     backdrop-filter: blur(12px);
     background: rgba(255, 255, 255, 0.1);
     border-image: initial;
@@ -53,31 +53,8 @@ const { href, title, body, tags } = Astro.props;
     line-height: 1.4;
     padding: 1rem 1rem;
     border-radius: calc(var(--border-radius) - 0.15rem);
-
-    text-decoration: none;
-    transition: opacity 0.2s ease;
-  }
-
-  .tags {
     display: flex;
-    flex-wrap: wrap;
-    padding: 1rem 1rem;
-  }
-
-  .tag {
-    backdrop-filter: blur(12px);
-    border-image: initial;
-    background-position: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: var(--border-radius);
-    background: rgba(255, 255, 255, 0.1);
-    margin-right: 0.5rem;
-    padding: 0.5em 1em;
-    text-transform: capitalize;
-
-    &:last-child {
-      margin-right: 0;
-    }
+    flex-direction: column;
   }
 
   .title {

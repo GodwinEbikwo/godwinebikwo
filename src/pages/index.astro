@@ -1,208 +1,133 @@
 ---
 import Card from '../components/Card.astro';
 import Layout from '../layouts/Layout.astro';
+
 const allPosts = await Astro.glob('../pages/posts/*.md');
 const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
 ---
 
-<Layout title='Welcome to Astro.'>
-  <div class='l-page_inner'>
-    <aside class='l-page_left'>
-      <div class='name_container'>
-        <h1 class='name'>Godwin Ebikwo</h1>
-      </div>
+<Layout title='Godwin Ebikwo - Home'>
+  <section class='intro'>
+    <div class='intro_inner'>
+      <h1 class='title'>Holla, I am Godwin</h1>
 
-      <h4 class='caption'>Graduate data scientist.</h4>
-      <br />
+      <h2 class='description'>
+        I am a data science Master’s Student, with a strong background in
+        programming, statistical analysis and machine learning. I am interested
+        in utilizing data-driven strategies to drive informed decision making,
+        captivate audiences through storytelling, foster innovation and
+        facilitate growth within organizations.
+      </h2>
 
-      <div class='about'>
-        <h4>
-          I am a data science Master’s Student, with a strong background in
-          programming, statistical analysis and machine learning.
-
-          <br />
-          <br />
-          I am interested in utilizing data-driven strategies to drive informed decision
-          making, captivate audiences through storytelling, foster innovation and
-          facilitate growth within organizations.
-        </h4>
-      </div>
-
-      <br />
-      <h4 class='availability'>Availabe for work</h4>
-      <h4 class='location'>England United Kingdom</h4>
-
-      <div class='socials'>
-        <ul>
-          <li>
-            <a href='mailto:godwin.a.ebikwo@gmail.com'>mail me</a>
-          </li>
-          <li>@godwinebikwo</li>
-        </ul>
-      </div>
-    </aside>
-
-    <section class='l-page_right'>
-      <div class='name_container'>
-        <h1>Portfolio</h1>
-      </div>
-
-      <ul class='tags'>
-        {
-          tags.map((tag) => (
-            <li class='tag'>
-              <a href={`/tags/${tag}`}>{tag}</a>
-            </li>
-          ))
-        }
+      <ul role='list' class='flex flex-row gap'>
+        <li>
+          <a class='link link--metis' href=''>Twitter</a>
+        </li>
+        <li>/</li>
+        <li>
+          <a class='link link--metis' href=''>Github</a>
+        </li>
+        <li>/</li>
+        <li>
+          <a class='link link--metis' href=''>LinkedIn</a>
+        </li>
       </ul>
+    </div>
+  </section>
 
-      <ul class='content'>
-        {
-          allPosts.map((post) => (
-            <Card
-              href={post.url}
-              title={post.frontmatter.title}
-              body={post.frontmatter.description}
-              tags={post.frontmatter.tags}
-            />
-          ))
-        }
-      </ul>
+  <section class='post_section'>
+    <div class='post_section-header'>
+      <h3 class='post_section-header_title'>Latest Posts</h3>
+      <a class='link link--metis' href='/posts'>See all Posts</a>
+    </div>
 
-      <p></p>
-    </section>
-  </div>
+    <ul class='posts_row'>
+      {
+        allPosts.map((post) => (
+          <Card
+            href={post.url}
+            title={post.frontmatter.title}
+            body={post.frontmatter.description}
+            tags={post.frontmatter.tags}
+          />
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class='post_section'>
+    <div class='post_section-header'>
+      <h3 class='post_section-header_title'>Seleted Projects (5)</h3>
+    </div>
+
+    <ul class='posts_row'>
+      {
+        allPosts.map((post) => (
+          <Card
+            href={post.url}
+            title={post.frontmatter.title}
+            body={post.frontmatter.description}
+            tags={post.frontmatter.tags}
+          />
+        ))
+      }
+    </ul>
+  </section>
 </Layout>
 
 <style lang='scss'>
-  .l-page_inner {
+  .intro {
     display: flex;
-  }
+    flex-direction: column;
+    gap: 2rem;
 
-  .l-page_left {
-    position: relative;
-    flex: 0 0 30%;
-    letter-spacing: -0.011em;
-
-    & > .name_container {
-      margin-bottom: 3rem;
-
-      & > h1 {
-        font-weight: 600;
-        letter-spacing: 0.011em;
-        text-transform: uppercase;
-      }
-    }
-
-    & > .caption {
-    }
-
-    & > .availability {
-      color: var(--text-bright-accent);
-      margin-bottom: 0.5rem;
-    }
-
-    & > .location {
-      color: var(--text-bright-accent);
-      margin-bottom: 0.5rem;
-    }
-
-    & > .about {
-      display: block;
-      max-width: 35ch;
-      line-height: 1.6;
-
-      @media (max-width: 768px) {
-        max-width: none;
-      }
-    }
-
-    & > .socials {
-      color: var(--text-bright-accent);
-      margin-bottom: 0.5rem;
-
-      & ul {
-        display: flex;
-        & > li {
-          margin-right: 0.5em;
-          text-decoration: underline;
-
-          &:last-child {
-            margin-right: 0em;
-          }
-        }
-      }
+    @media (min-width: 768px) {
+      gap: 3rem;
+      justify-content: flex-end;
+      flex-direction: row-reverse;
     }
   }
 
-  .l-page_right {
-    flex: 0 0 70%;
+  .intro_inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 
-    & > .name_container {
-      margin-bottom: 3rem;
-      & > h1 {
-        font-weight: 600;
-        letter-spacing: 0.011em;
-        text-transform: uppercase;
-      }
+    .title {
+      font-size: var(--font-size-xl);
+      line-height: 1;
+      font-weight: 500;
+      letter-spacing: -0.02em;
     }
 
-    & > .content {
-      margin-top: 1.5rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      grid-gap: 10px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 0 auto;
-    }
-
-    .tag {
-      backdrop-filter: blur(12px);
-      border-image: initial;
-      background-position: 100%;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: var(--border-radius);
-      background: rgba(255, 255, 255, 0.1);
-      margin-right: 0.5rem;
-      padding: 0.5em 1em;
-      text-transform: capitalize;
-      &:last-child {
-        margin-right: 0;
-      }
+    .description {
+      width: auto;
+      max-width: 60ch;
+      line-height: 1.7;
+      // color: rgb(193, 196, 228);
     }
   }
 
-  @media (max-width: 768px) {
-    .l-page_inner {
-      flex-direction: column;
-    }
+  .post_section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 
-    .l-page_left {
-      & > .name_container {
-        margin-bottom: 1rem;
-      }
-    }
+  .post_section-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
 
-    .l-page_left,
-    .l-page_right {
-      flex: 0 0 100%;
-    }
+  .post_section-header_title {
+    font-weight: 500;
+  }
 
-    .l-page_right {
-      margin-top: 2rem;
-
-      & > .name_container {
-        margin-bottom: 1rem;
-      }
-
-      & > .content {
-        margin-top: 1rem;
-      }
-    }
+  .posts_row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 1rem;
   }
 </style>

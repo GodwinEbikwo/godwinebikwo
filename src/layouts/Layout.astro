@@ -4,9 +4,7 @@ interface Props {
 }
 
 const { title } = Astro.props;
-
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/footer.astro';
+import Header from '../components/Header.astro';
 ---
 
 <!DOCTYPE html>
@@ -26,18 +24,17 @@ import Footer from '../components/footer.astro';
     <title>{title}</title>
   </head>
   <body>
-    <div class='l-container'>
-      <div class='l-header'>
-        <div aria-hidden='true' class='l-gradient'></div>
-      </div>
-      <main class='l-main'>
-        <div class='l-page'>
-          <slot />
-        </div>
-      </main>
+    <div class='l-header'>
+      <div aria-hidden='true' class='l-gradient'></div>
     </div>
-
-    <Footer />
+    <Header />
+    <div class='l-container'>
+      <div class='l-main'>
+        <main class='l-page'>
+          <slot />
+        </main>
+      </div>
+    </div>
   </body>
 </html>
 
@@ -48,8 +45,11 @@ import Footer from '../components/footer.astro';
     --page-bg: rgb(0, 2, 18);
     --text-base: #fff;
     --border-radius: 0.3rem;
-    --text-bright-accent: rgb(193, 196, 228);
+    --text-accent: rgb(193, 196, 228);
     --transparent: rgba(255, 255, 255, 0);
+
+    --max-width: 800px;
+    --px-lr: 1rem;
 
     --font-size-sm: clamp(0.7rem, 0.09vw + 0.68rem, 0.75rem);
     --font-size-base: clamp(0.88rem, 0.23vw + 0.82rem, 1rem);
@@ -84,9 +84,10 @@ import Footer from '../components/footer.astro';
   hr,
   dd {
     all: unset;
-    display: block;
     margin: 0;
     padding: 0;
+    border: 0;
+    vertical-align: baseline;
   }
 
   ul[role='list'],
@@ -104,9 +105,15 @@ import Footer from '../components/footer.astro';
   }
 
   a {
-    text-decoration-skip-ink: auto;
-    text-decoration: none;
+    text-decoration: inherit;
     color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  a:focus,
+  button:focus {
+    outline: none;
   }
 
   img,
@@ -123,29 +130,139 @@ import Footer from '../components/footer.astro';
   }
 
   body {
-    background-color: var(--page-bg);
+    min-height: 100vh;
     color: var(--text-base);
     line-height: 1.5;
+    background-color: var(--page-bg);
     -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
     text-rendering: optimizeLegibility;
     font-family: 'Inter', system-ui, sans-serif;
   }
 
-  h1 {
-    font-size: var(--font-size-md);
-    letter-spacing: -0.03em;
+  .w-full {
+    width: 100%;
   }
 
-  .l-container {
-    --text-base: #fff;
+  .h-full {
+    height: 100%;
+  }
 
-    color: var(--text-base);
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  .line {
+    overflow: hidden;
+    font-kerning: none;
+  }
+
+  .block {
+    display: block;
+  }
+
+  .inline-block {
+    display: inline-block;
+  }
+
+  .overflow-hidden {
+    overflow: hidden;
+  }
+
+  .relative {
     position: relative;
-    z-index: 0;
+  }
+
+  .link {
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+  }
+
+  .link::before,
+  .link::after {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    top: 100%;
+    left: 0;
+    pointer-events: none;
+  }
+
+  .link::before {
+    content: '';
+  }
+
+  .link--metis {
+    text-transform: inherit;
+  }
+
+  .link--metis::before {
+    transform-origin: 100% 50%;
+    transform: scale3d(0, 1, 1);
+    transition: transform 0.5s;
+  }
+
+  .link--metis:hover::before {
+    transform-origin: 0% 50%;
+    transform: scale3d(1, 1, 1);
+  }
+
+  .tags {
+    --gutter: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--gutter, clamp(1.375rem, 1.2rem + 0.89vw, 2rem));
+    padding: 1rem;
+  }
+
+  .tag {
+    &:last-child {
+      margin-right: 0;
+    }
+
+    display: inline-block;
+    vertical-align: middle;
+    font-size: var(--font-size-base);
+    line-height: 1;
+    padding: 0.35rem 0.6rem;
+
+    backdrop-filter: blur(12px);
+    border-image: initial;
+    background-position: 100%;
+    border-radius: 2em;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.01);
+    cursor: pointer;
+    appearance: none;
+    text-transform: capitalize;
+  }
+
+  .flex {
+    display: flex;
+
+    &.gap {
+      gap: 0.3rem;
+    }
+
+    &.ai {
+      align-items: center;
+    }
+
+    &.jc {
+      justify-content: center;
+    }
+
+    &.flex-column {
+      flex-direction: column;
+    }
+
+    &.flex-row {
+      flex-direction: row;
+    }
+
+    &.space-between {
+      justify-content: space-between;
+    }
   }
 
   .l-header {
@@ -164,15 +281,39 @@ import Footer from '../components/footer.astro';
     }
   }
 
+  .l-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    z-index: 0;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+  }
+
   .l-main {
-    min-height: 600px;
+    margin: 0 auto;
+    width: 100%;
     flex: 1 1 0%;
+    min-height: 600px;
+    max-width: var(--max-width);
   }
 
   .l-page {
-    max-width: 1200px;
-    margin: 0px auto;
-    padding: 2rem 1rem;
+    padding: 2rem var(--px-lr);
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 </style>
+
+<script>
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+  window.addEventListener('resize', () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  });
+</script>

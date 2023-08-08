@@ -1,9 +1,9 @@
 ---
-import BlogLayout from './BlogLayout.astro';
+import Layout from './Layout.astro';
 const { frontmatter } = Astro.props;
 ---
 
-<BlogLayout title={frontmatter.title}>
+<Layout title={frontmatter.title}>
   <header class='c-block_header' role='presentation'>
     <p class='c-subtitle'>{frontmatter.pubDate.slice(0, 10)}</p>
     <p class='c-subtitle'>Written by: {frontmatter.author}</p>
@@ -22,36 +22,10 @@ const { frontmatter } = Astro.props;
     }
   </ul>
 
-  <!-- <div class='c-block_title'>
-    <h2 class='c-title'>{frontmatter.title}</h2>
-  </div> -->
-
   <slot />
-</BlogLayout>
+</Layout>
 
 <style lang='scss'>
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 1.5rem auto;
-  }
-
-  .tag {
-    backdrop-filter: blur(12px);
-    border-image: initial;
-    background-position: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: var(--border-radius);
-    background: rgba(255, 255, 255, 0.1);
-    margin-right: 0.5rem;
-    padding: 0.5em 1em;
-    text-transform: capitalize;
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-
   .c-block_header {
     margin-bottom: 1.5rem;
 
