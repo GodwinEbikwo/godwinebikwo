@@ -24,10 +24,10 @@ import Header from '../components/Header.astro';
     <title>{title}</title>
   </head>
   <body>
+    <Header />
     <div class='l-header'>
       <div aria-hidden='true' class='l-gradient'></div>
     </div>
-    <Header />
     <div class='l-container'>
       <div class='l-main'>
         <main class='l-page'>
@@ -49,7 +49,7 @@ import Header from '../components/Header.astro';
     --transparent: rgba(255, 255, 255, 0);
 
     --max-width: 800px;
-    --px-lr: 1rem;
+    --px-lr: 1.2rem;
 
     --font-size-sm: clamp(0.7rem, 0.09vw + 0.68rem, 0.75rem);
     --font-size-base: clamp(0.88rem, 0.23vw + 0.82rem, 1rem);
