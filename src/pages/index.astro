@@ -35,7 +35,7 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
     </div>
   </section>
 
-  <section class='post_section'>
+  <!-- <section class='post_section'>
     <div class='post_section-header'>
       <h3 class='post_section-header_title'>Latest Posts</h3>
       <a class='link link--metis' href='/posts'>See all Posts</a>
@@ -53,7 +53,7 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
         ))
       }
     </ul>
-  </section>
+  </section> -->
 
   <section class='post_section'>
     <div class='post_section-header'>
@@ -72,10 +72,19 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
         ))
       }
     </ul>
+
   </section>
 </Layout>
 
 <style lang='scss'>
+
+  ul[role='list'],
+  li,
+  ol[role='list'] {
+    list-style: none;
+  }
+
+
   .intro {
     display: flex;
     flex-direction: column;
@@ -104,7 +113,9 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
       width: auto;
       max-width: 60ch;
       line-height: 1.7;
-      // color: rgb(193, 196, 228);
+      letter-spacing: 0em;
+      font-weight: 400;
+      font-size: inherit;
     }
   }
 
@@ -122,7 +133,8 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
   }
 
   .post_section-header_title {
-    font-weight: 500;
+    font-weight: 00;
+    letter-spacing: -0.02em;
   }
 
   .posts_row {

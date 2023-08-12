@@ -42,7 +42,8 @@ import Header from '../components/Header.astro';
   :root {
     --ls: -0.02em;
 
-    --page-bg: rgb(0, 2, 18);
+    --page-bg: rgb(6, 9, 33);
+    // --page-bg: rgb(13, 16, 40);
     --text-base: #fff;
     --border-radius: 0.3rem;
     --text-accent: rgb(193, 196, 228);
@@ -82,18 +83,17 @@ import Header from '../components/Header.astro';
   section,
   aside,
   hr,
+  pre,
+  code,
   dd {
-    all: unset;
     margin: 0;
     padding: 0;
     border: 0;
     vertical-align: baseline;
   }
 
-  ul[role='list'],
-  li,
-  ol[role='list'] {
-    list-style: none;
+  ol[role='list'], li{
+    list-style: initial;
   }
 
   html:focus-within {
@@ -118,6 +118,7 @@ import Header from '../components/Header.astro';
 
   img,
   picture {
+    width: 100%;
     max-width: 100%;
     display: block;
   }
@@ -139,34 +140,27 @@ import Header from '../components/Header.astro';
     font-family: 'Inter', system-ui, sans-serif;
   }
 
-  .w-full {
-    width: 100%;
+  h1{
+    font-weight: 700;
+    font-size: var(--font-size-lg);
+    letter-spacing: -0.04em;
   }
 
-  .h-full {
-    height: 100%;
+  h2 {
+     font-weight: 600;
+     font-size: var(--font-size-md);
+     letter-spacing: -0.04em;
   }
 
-  .line {
-    overflow: hidden;
-    font-kerning: none;
+  p {
+    line-height: 1.7;
   }
 
-  .block {
-    display: block;
+  pre{
+    padding: 1em;
+    border-radius: var(--border-radius);
   }
 
-  .inline-block {
-    display: inline-block;
-  }
-
-  .overflow-hidden {
-    overflow: hidden;
-  }
-
-  .relative {
-    position: relative;
-  }
 
   .link {
     cursor: pointer;
@@ -208,11 +202,14 @@ import Header from '../components/Header.astro';
     --gutter: 0.5rem;
     display: flex;
     flex-wrap: wrap;
-
     justify-content: flex-start;
     align-items: center;
     gap: var(--gutter, clamp(1.375rem, 1.2rem + 0.89vw, 2rem));
     padding: 1rem;
+
+    & > li {
+      list-style: none;
+    }
   }
 
   .tag {

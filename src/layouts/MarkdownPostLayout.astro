@@ -1,16 +1,22 @@
 ---
 import Layout from './Layout.astro';
 const { frontmatter } = Astro.props;
+
+const image = frontmatter.image;
+const showImage = image && image.url;
 ---
 
 <Layout title={frontmatter.title}>
   <header class='c-block_header' role='presentation'>
     <p class='c-subtitle'>{frontmatter.pubDate.slice(0, 10)}</p>
     <p class='c-subtitle'>Written by: {frontmatter.author}</p>
-    <p class='c-caption'>{frontmatter.description}</p>
   </header>
 
-  <img src={frontmatter.image.url} width='300' alt={frontmatter.image.alt} />
+  { showImage && 
+    <>
+      <img src={image.url} width="300" alt={image.alt} />
+    </>
+  }
 
   <ul class='tags'>
     {
@@ -22,16 +28,25 @@ const { frontmatter } = Astro.props;
     }
   </ul>
 
+
+
   <slot />
 </Layout>
 
 <style lang='scss'>
-  .c-block_header {
-    margin-bottom: 1.5rem;
 
+  .tags{
+    padding: 0;
+  }
+
+
+  .c-block_header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    
     .c-caption {
       color: var(--text-bright-accent);
-      margin-bottom: 0.42rem;
       text-transform: capitalize;
       letter-spacing: -0.033em;
     }
