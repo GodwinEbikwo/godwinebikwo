@@ -2,11 +2,6 @@ import { defineConfig } from 'astro/config'
 
 export default defineConfig({
     markdown: {
-        markdown: {
-            // Applied to .md and .mdx files
-            remarkPlugins: [remarkToc],
-            rehypePlugins: [rehypeAccessibleEmojis],
-        },
         shikiConfig: {
             // Choose from Shiki's built-in themes (or add your own)
             // https://github.com/shikijs/shiki/blob/main/docs/themes.md
